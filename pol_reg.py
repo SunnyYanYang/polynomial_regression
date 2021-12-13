@@ -5,8 +5,6 @@ import pandas as pd
 from sklearn.preprocessing import PolynomialFeatures
 
 
-# lin_reg_2 = LinearRegression()
-# lin_reg_2.fit(X_poly, y)
 def learn_curve(train_error_iteration, valid_error_iteration):
     train = np.array(train_error_iteration)
     valid = np.array(valid_error_iteration)
@@ -28,7 +26,7 @@ def approximate_gradient(x, y, a, lamda):
     approx_gradient = np.zeros((np.shape(x)[1], 1))
     for i in range(np.shape(x)[1]):
         b = np.zeros((np.shape(x)[1], 1), dtype=float)
-        delta = 0.001
+        delta = 0.1
         b[i] = delta
         approx_gradient[i] = (compute_error_for_given_points(a + b, x, y, lamda)
                               - compute_error_for_given_points(a - b, x, y, lamda)) / (2 * delta)
